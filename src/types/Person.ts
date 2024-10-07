@@ -3,8 +3,9 @@ import { Habilities } from "./Habilities";
 
 export interface PersonAttributes {
     name: string;
-    age: number;
+    lastname:string;
+    age?: number;
     avatarPath?: string | StaticImport;
-    alt: string;
-    habilities: Array<Habilities>;
+    alt?: string;
+    habilities?: Array<Habilities>;
 }
