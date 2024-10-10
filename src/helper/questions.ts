@@ -1,12 +1,17 @@
-import { questions as q } from "@/types/Questions";
+import { Question } from "@/types/Questions";
 
 
 
-export const Questions: Array<q> = [{
+export const Questions: Array<Question> = [{
     id:1,
     question:'Qual ingrediente não pode faltar ?',
-    options: {opt1:'Farinha',opt2:'Ovo',opt3:'Corante',opt4:'Pneu'} ,
-    anwser:'Corante'
+    options: ['Farinha','Ovo','Corante','Pneu'] ,
+    anwser:2
+},{
+    id:2,
+    question:'Qual melhor método de cozinhar ?',
+    options: ['Microondas','Fogão','Fogueira','Lança chamas'] ,
+    anwser:2
 }]
 
 
