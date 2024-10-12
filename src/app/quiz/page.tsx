@@ -1,35 +1,70 @@
 "use client";
-import { Questions } from "@/helper/questions";
-import React, { useState } from "react";
 import { QuestionItem } from "./components/QuestionItem";
+import { Results } from "./components/Results";
+import { questions } from "@/helper/questions";
+import { useState } from "react";
 
-// import { Container } from './styles';
-
-const Quiz: React.FC = () => {
+export default function Home() {
+  const title = "Quiz de conhecimentos gerais";
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const title = "Quiz de Culinária";
+  const [answers, setAnswers] = useState<number[]>([]);
+  const [showResult, setShowResult] = useState(false);
 
-  const handleAnswered = (answer: number) => {};
+  const loadNextQuestion = () => {
+    if (questions[currentQuestion + 1]) {
+      setCurrentQuestion(currentQuestion + 1);
+    } else {
+      setShowResult(true);
+    }
+  };
+
+  //pega a resposta e salva em um novo array com o spread operator e adicionar o novo item no final
+  const handleAnswered = (answer: number) => {
+    setAnswers([...answers, answer]);
+    loadNextQuestion();
+  };
+
+  // essa função vai limpar o array de respostas e voltar para a primeira pergunta
+  const handleRestartButton = () => {
+    setAnswers([]);
+    setCurrentQuestion(0);
+    setShowResult(false);
+  };
+
   return (
-    <div className="h-screen bg-gradient-to-tr to-orange-500 from-slate-500 gap-10 flex flex-col items-center justify-center">
-      <h1 className="text-6xl text-white text-start w-full pl-16">{title}</h1>
-
-      <div className="w-full max-w-1/2  rounded-md bg-white text-black shadow shadow-black">
-        <h2 className="text-bold text-2xl py-5 text-center shadow shadow-gray-300 text-black/80"></h2>
-        <p className="text-center text-bold text-black">
-          x de {Questions.length} pergunta{Questions.length === 1 ? "" : "s"}
-        </p>
-        <div className="p-5">
-          <QuestionItem
-            question={Questions[currentQuestion]}
-            count={currentQuestion + 1}
-            onAnswer={handleAnswered}
-          />
+    <main className="w-full h-screen flex justify-center items-center bg-blue-600">
+      <div className="w-full max-w-xl rounded-md bg-white text-black shadow shadow-black">
+        <div className="p-5 font-bold text-2xl border-b border-gray-300">
+          {title}
         </div>
-        <div className="p-5 text-center border-t border-gray-300">...</div>
-      </div>
-    </div>
-  );
-};
+        <div className="p-5">
+          {!showResult && (
+            <QuestionItem
+              question={questions[currentQuestion]}
+              count={currentQuestion + 1}
+              onAnswer={handleAnswered}
+            />
+          )}
+          {showResult && <Results questions={questions} answers={answers} />}
+        </div>
+        <div className="p-5 text-center border-t border-gray-300">
+          {!showResult &&
+            `${currentQuestion + 1} de ${questions.length} pergunta ${
+              questions.length > 1 && "s"
+            }`}
+          {/* {currentQuestion + 1} de {questions.length} pergunta
+          {questions.length > 1 && "s"} */}
 
-export default Quiz;
+          {showResult && (
+            <button
+              className="px-3 py-2 rounded-md bg-blue-800 text-white"
+              onClick={handleRestartButton}
+            >
+              Reiniciar Quiz
+            </button>
+          )}
+        </div>
+      </div>
+    </main>
+  );
+}
