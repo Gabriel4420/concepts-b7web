@@ -13,7 +13,7 @@ const Video: React.FC = () => {
       <div className="flex flex-col rounded-full gap-5 border-4 border-white text-6xl">
         <button onClick={() => setIsPlaying(!playing)}>{playing ? <PlayIcon size={80} className="bg-blue-400 rounded-full text-white p-3 "/> : <PauseIcon size={80} className="bg-red-400 rounded-full text-white p-3"/>}</button>
       </div>
-      <VideoPlayer url="" isPlaying/>
+      <VideoPlayer url="https://www.w3schools.com/html/mov_bbb.mp4" isPlaying={playing}/>
     </div>
   );
 };

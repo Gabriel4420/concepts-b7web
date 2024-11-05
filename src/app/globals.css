@@ -13,6 +13,8 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
@@ -24,3 +26,38 @@ body {
     --radius: 0.5rem;
   }
 }
+
+
+/* Adiciona o efeito de hover ao checkbox usando Tailwind */
+.checkbox-container input[type="checkbox"]::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #cacacb; /* Cor de destaque no hover */
+  border-radius: 4px; /* Ajuste para parecer um accent */
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Mostra o efeito ao passar o mouse */
+.checkbox-container input[type="checkbox"]:hover::before {
+  opacity: 1;
+}
+
+/* Ajusta o estado marcado */
+.checkbox-container input[type="checkbox"]:checked::before {
+  content: '✅';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color:white;
+  background-color: transparent; /* Cor quando marcado */
+  opacity: 1;
+}
+

@@ -19,15 +19,15 @@ const RoundInput: React.FC<RoundInputProps> = ({
       <div className="relative w-full">
         <span className="absolute inset-y-0 left-0 flex items-center pl-3">
           {isSearchOrSender === "search" ? (
-            <FiSearch className="text-gray-500" />
+            <FiSearch className="text-gray-500" size={20} />
           ) : (
-            <FiSend className="text-gray-500" />
+            <FiSend className="text-gray-500 font-thin" size={20} />
           )}
         </span>
         <input
           type="text"
           placeholder={placeholder}
-          className="rounded-full border shadow-lg border-gray-300 pl-10 p-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="rounded-full border shadow-lg border-gray-300 pl-10 p-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-lg "
           {...props}
         />
       </div>
