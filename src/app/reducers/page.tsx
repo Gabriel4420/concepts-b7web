@@ -1,5 +1,6 @@
 "use client";
 
+import { actions } from "@/helper/crud-reducer";
 import RoundInput from "@/components/Input";
 import { listReducer } from "@/reducers/listReducer";
 import { PenIcon, Trash2 } from "lucide-react";
@@ -8,18 +9,13 @@ import { useReducer, useState } from "react";
 const Reducer = () => {
   const [list, dispatch] = useReducer(listReducer, []);
   const [addField, setAddfield] = useState("");
-  const handleAddClick = () => {
-    if (addField.trim() === "") {
-      return false;
-    }
-    dispatch({ type: "add", payload: { text: addField.trim() } });
 
-    setAddfield("");
-  };
-
-  const handleToggle = (id: number) => {
-    dispatch({ type: "toggleDone", payload: { id } });
-  };
+  const { handleAddClick, switchToggle, removeTask, editTask } = actions({
+    list,
+    dispatch,
+    addField,
+    setAddfield,
+  });
 
   return (
     <div className="h-screen bg-gradient-to-tr to-slate-300 from-gray-800 gap-10 flex flex-col items-center justify-center">
@@ -52,10 +48,14 @@ const Reducer = () => {
                 <input
                   type="checkbox"
                   checked={i.done}
-                  onClick={() => handleToggle(i.id)}
+                  onClick={() => switchToggle(i.id)}
                   className=" w-8 h-8 mr-3 cursor-pointer border-2 border-gray-500 rounded-sm  underline relative"
                 />
-                <span className={`text-white -mt-10 ${i.done ? "line-through" : ""}`}>
+                <span
+                  className={`text-white -mt-10 ${
+                    i.done ? "line-through" : ""
+                  }`}
+                >
                   {i.text}
                 </span>
               </label>
@@ -65,6 +65,7 @@ const Reducer = () => {
                 title="excluir"
                 aria-label="excluir"
                 className="bg-red-800 hover:bg-red-500 rounded-full py-2 px-2"
+                onClick={() => removeTask(i.id)}
               >
                 <Trash2 size={32} className="text-white" />
               </button>
@@ -72,6 +73,7 @@ const Reducer = () => {
                 title="editar"
                 aria-label="editar"
                 className="bg-blue-800 hover:bg-blue-500 rounded-full py-2 px-2"
+                onClick={() => editTask(i.id)}
               >
                 <PenIcon size={32} className="text-white" />
               </button>
