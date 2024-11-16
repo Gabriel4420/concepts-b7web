@@ -1,12 +1,21 @@
-'use client'
+"use client";
+import { postReducer } from "@/reducers/postReducer";
 import { PostContextType } from "@/types/contexts/PostContextType";
-import { Post } from "@/types/Post";
-import { createContext, ReactNode, useState } from "react";
+
+import { createContext, ReactNode, useReducer } from "react";
 
 export const PostContext = createContext<PostContextType | null>(null);
 export const PostProvider = ({ children }: { children: ReactNode }) => {
-  const [posts, setPosts] = useState<Array<Post>>([]);
+  const [posts, dispatch] = useReducer(postReducer, []);
+
+  const useAddPost = (title: string, body: string) => {
+      dispatch({ type: "add", payload: { title, body, id: posts.length } });
+  
+  };
+
   return (
-    <PostContext.Provider value={{ posts }}>{children}</PostContext.Provider>
+    <PostContext.Provider value={{ posts, useAddPost }}>
+      {children}
+    </PostContext.Provider>
   );
 };
