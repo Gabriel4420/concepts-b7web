@@ -2,6 +2,7 @@
 import RoundInput from "@/components/Input";
 import { PostContext } from "@/contexts/PostContext";
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 
 // import { Container } from './styles';
 
@@ -16,6 +17,7 @@ const FormPost: React.FC = () => {
       postCtx?.useAddPost(titleInput, bodyInput);
       setTitleInput("");
       setBodyInput("");
+      toast.success("Post Cadastrado com sucesso", { duration: 3000 });
     }
   };
 

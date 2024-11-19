@@ -22,7 +22,6 @@ const Fullname: FC = () => {
           isSearchOrSender="sender"
           value={fullName.name}
           onChange={(e) => setFullName({ ...fullName, name: e.target.value })}
-          
         />
         <RoundInput
           title="Name"
@@ -41,7 +40,7 @@ const Fullname: FC = () => {
 
         <button
           className="bg-slate-900 text-white py-2 px-5 rounded-md border-none"
-          onClick={() => setFullName({ name: "", lastname: "" })}
+          onClick={() => setFullName({ alt: "", name: "", lastname: "" })}
         >
           Limpar tudo
         </button>

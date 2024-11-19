@@ -15,20 +15,17 @@ function Page() {
           alt="Uma pessoa legal"
           avatarPath="https://avatars.githubusercontent.com/u/37821374?v=4"
           name="Gabriel Rodrigues Perez"
-          habilities={Habilities}
-        />
+          habilities={Habilities} lastname={""}        />
         <Person
           age={34}
           alt="Uma pessoa"
           name="Fernando Pontes"
-          habilities={Habilities}
-        />
+          habilities={Habilities} lastname={""}        />
         <Person
           age={58}
           alt="Uma pessoa"
           name="Agnaldo Pontes"
-          habilities={Habilities}
-        />
+          habilities={Habilities} lastname={""}        />
       </div>
     </div>
   );

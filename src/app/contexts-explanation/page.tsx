@@ -1,7 +1,4 @@
 "use client";
-
-import Head from "next/head";
-
 type TitleProps = { text: string };
 type SubtitleProps = { text: string };
 type HeaderProps = { title: string; subtitle: string };
@@ -31,14 +28,7 @@ const PageZ: React.FC = () => {
 
   return (
     <>
-      <Head>
-        <title>Minha Página - Next.js 14</title>
-        <meta
-          name="description"
-          content="Esta é a minha página no Next.js com TypeScript"
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-      </Head>
+      
       <div className="container mx-auto">
         <Header title={pageInfo.title} subtitle={pageInfo.subtitulo} />
       </div>

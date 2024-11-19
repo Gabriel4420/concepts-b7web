@@ -6,6 +6,6 @@ export interface PersonAttributes {
     lastname:string;
     age?: number;
     avatarPath?: string | StaticImport;
-    alt?: string;
+    alt: string;
     habilities?: Array<Habilities>;
 }
