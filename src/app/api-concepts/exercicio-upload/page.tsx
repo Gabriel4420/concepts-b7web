@@ -91,6 +91,21 @@ const Upload: React.FC = () => {
         >
           Enviar imagem
         </button>
+
+        <button
+          className="bg-transparent hover:bg-white border border-white text-white hover:text-slate-700"
+          onClick={handleStartRequest}
+          type="submit"
+        >
+          Fazer request
+        </button>
+        <button
+          className="bg-transparent hover:bg-white border border-white text-white hover:text-slate-700"
+          onClick={handleCancelRequest}
+          type="submit"
+        >
+          Cancelar request
+        </button>
       </div>
     </div>
   );
