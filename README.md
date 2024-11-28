@@ -4,7 +4,7 @@
 ---
 
 <p align="center">
-  <img alt="Gif da Aplicação" src="images/HomeApp.png" />
+  <img alt="Gif da Aplicação" src="/public/images/HomeApp.png" />
 </p>
 
 ---
