@@ -16,7 +16,7 @@ export const GeometryForm: React.FC<GeometryProps> = ({ text, type = 'Square' }:
 
   return (
     <div className={`w-52 h-52 bg-orange-400 flex items-center justify-center ${type === 'Square'?'rounded-3xl' : type === 'Circle' && 'rounded-full'}`}>
-      <h2 className="text-white text-3xl capitalize font-bold">{text}</h2>
+      <h2 className="text-white text-xl capitalize font-bold">{text}</h2>
     </div>
   );
 };

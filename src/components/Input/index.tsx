@@ -28,7 +28,7 @@ const RoundInput: React.FC<RoundInputProps> = ({
         <input
           type="text"
           placeholder={placeholder}
-          className="rounded-full border shadow-lg border-gray-300 pl-10 p-4 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-lg focus-visible"
+          className="rounded-full border shadow-lg border-gray-300 pl-10 p-2 w-full focus:outline-none focus:ring-2 focus:ring-blue-500 placeholder:text-lg focus-visible"
           {...props}
         />
       </div>
